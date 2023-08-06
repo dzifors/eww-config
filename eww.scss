@@ -1,0 +1,26 @@
+* {
+  all: unset; //Unsets everything so you can style everything from scratch
+}
+
+//Global Styles
+.bar {
+  background-color: #3a3a3a;
+  font-weight: normal;
+  font-family: "Comic Code";
+}
+
+// Styles on classes (see eww.yuck for more information)
+
+.workspace-entry {
+  padding: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.occupied {
+  background-color: hsl(230, 15%, 15%);
+}
+
+.current {
+  background-color: hsl(230, 5%, 5%);
+}
