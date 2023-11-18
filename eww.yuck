@@ -21,8 +21,24 @@
 (defwidget sidestuff2 []
   (box :class "sidestuff" :orientation "h" :space-evenly false :halign "end" :spacing 15
   (music)
-    time))
+  (cpu-temp)
+  (battery)
+    time
+    
+  (systray)))
 
+(defwidget cpu-temp []
+	(label :class "cpu-temp" :text "CPU: ${EWW_TEMPS.CORETEMP_PACKAGE_ID_0} °C")
+)
+
+(defpoll battery-icon :interval "1s" "scripts/battery icon")
+(defpoll battery-percentage :interval "1s" "scripts/battery percentage")
+(defpoll battery-status :interval "1s" "upower -i /org/freedesktop/UPower/devices/battery_BAT1 | grep time")
+(defwidget battery []
+	(box :space-evenly "false"
+		(label :class "battery" :halign "end" :text "BAT: ${battery-percentage}%" :tooltip battery-status)
+	)
+)
 
 (deflisten workspaces :initial "[]" "bash ~/.config/eww/scripts/get-workspaces")
 (deflisten current_workspace :initial "1" "bash ~/.config/eww/scripts/get-active-workspace")
